@@ -1,23 +1,64 @@
 <template>
   <div class="card m--1 g--11">
-    <h1 v-text="stopptimer"/>
-    <p v-text="persons"></p>
-    <button class="btn--raised" @click="addPerson">+</button> &nbsp;
-    <button class="btn--raised" @click="removePerson" v-if="activeRecords()">-</button>
+    <h1 v-text="stopptimer" />
+    <p v-text="persons" />
+    <p>
+      <button
+        class="btn--raised"
+        @click="addPerson"
+      >
+        +
+      </button> &nbsp;
+      <button
+        v-if="activeRecords()"
+        class="btn--raised"
+        @click="removePerson"
+      >
+        -
+      </button>
+    </p>
+    <p>
+      <input
+        id="use_rate"
+        v-model="useRate"
+        type="checkbox"
+      ><label for="use_rate">Hourly Rate</label>
+    </p>
+    <p v-if="useRate">
+      <input
+        v-model="hourlyRate"
+        type="number"
+      >
+      <select v-model="currencySymbol">
+        <option
+          v-for="c in currencies"
+          :key="c"
+          v-text="c"
+        />
+      </select>
+    </p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import format from 'format-duration'
+import currency from 'country-to-currency'
 
 interface IRecord {
   start: Date,
   end?: Date
 }
 
+const currencies = Object.values(currency).filter((value, index, self) => {
+  return self.indexOf(value) === index
+}).sort()
+
 const records = ref<Array<IRecord>>([])
 const stopptimer = ref('0:00:00')
+const useRate = ref(false)
+const hourlyRate = ref(100)
+const currencySymbol = ref('EUR')
 const persons = computed(() => {
   const count = activeRecords()
   if (count === 1) {
@@ -68,8 +109,12 @@ const calculateTime = () => {
 }
 
 const run = () => {
-  stopptimer.value = format(calculateTime())
-  setTimeout(run, 100)
+  if (useRate.value) {
+    stopptimer.value = (calculateTime() / 1000 / 60 / 60 * hourlyRate.value).toFixed(0) + ' ' + currencySymbol.value
+  } else {
+    stopptimer.value = format(calculateTime())
+  }
+  setTimeout(run, 30)
 }
 
 run()

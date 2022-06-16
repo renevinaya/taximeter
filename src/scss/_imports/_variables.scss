@@ -2,7 +2,7 @@
 
 // Type
 $serif: 'Gentium Book Basic', serif !default;
-$sans: Roboto, sans-serif !default;
+$sans: 'Titillium Web', sans-serif !default;
 $font-small: 12px !default;
 $font-med: 16px !default;
 $font-big: 22px !default;
@@ -10,14 +10,14 @@ $font-huge: 40px !default;
 $line-height: 130% !default;
 
 // Colors
-$primary: $turqoise !default;
-$secondary: lighten($turqoise, 10%) !default;
-$accent: $yellow !default;
+$primary: #3998E9 !default;
+$secondary: #39B54A !default;
+$accent: #DB162F !default;
 
 $body-background: $off-white !default;
 
 // Grid
-$grid-columns: 12 !default;
+$grid-columns: 13 !default;
 
 // Decorative
 $box-shadow-card: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 2px 10px 0 rgba(0, 0, 0, 0.07) !default;

@@ -16,7 +16,7 @@ module.exports = defineConfig({
       deployPath: '/',
       acl: 'public-read',
       pwa: true,
-      pwaFiles: 'index.html,service-worker.js,manifest.json',
+      pwaFiles: 'index.html',
       enableCloudfront: false,
       pluginVersion: '4.0.0-rc3',
       uploadConcurrency: 5

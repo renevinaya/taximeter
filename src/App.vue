@@ -57,7 +57,7 @@ const currencies = Object.values(currency).filter((value, index, self) => {
 const records = ref<Array<IRecord>>([])
 const stopptimer = ref('0:00:00')
 const useRate = ref(false)
-const hourlyRate = ref(100)
+const hourlyRate = ref(95)
 const currencySymbol = ref('EUR')
 const persons = computed(() => {
   const count = activeRecords()

@@ -110,7 +110,7 @@ const calculateTime = () => {
 
 const run = () => {
   if (useRate.value) {
-    stopptimer.value = (calculateTime() / 1000 / 60 / 60 * hourlyRate.value).toFixed(0) + ' ' + currencySymbol.value
+    stopptimer.value = (calculateTime() / 1000 / 60 / 60 * hourlyRate.value).toFixed(2) + ' ' + currencySymbol.value
   } else {
     stopptimer.value = format(calculateTime())
   }

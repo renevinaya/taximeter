@@ -1,42 +1,70 @@
 <template>
-  <div class="card m--1 g--11">
-    <h1 v-text="stopptimer" />
-    <p v-text="persons" />
-    <p>
-      <button
-        class="btn--raised"
-        @click="addPerson"
-      >
-        +
-      </button> &nbsp;
-      <button
-        v-if="activeRecords()"
-        class="btn--raised"
-        @click="removePerson"
-      >
-        -
-      </button>
-    </p>
-    <p>
-      <input
-        id="use_rate"
-        v-model="useRate"
-        type="checkbox"
-      ><label for="use_rate">Hourly Rate</label>
-    </p>
-    <p v-if="useRate">
-      <input
-        v-model="hourlyRate"
-        type="number"
-      >
-      <select v-model="currencySymbol">
-        <option
-          v-for="c in currencies"
-          :key="c"
-          v-text="c"
-        />
-      </select>
-    </p>
+  <div class="card">
+    <div class="card-content">
+      <h1
+        class="title"
+        v-text="stopptimer"
+      />
+      <p
+        class="subtitle"
+        v-text="persons"
+      />
+      <div class="field">
+        <button
+          class="button is-primary"
+          @click="addPerson"
+        >
+          +
+        </button> &nbsp;
+        <button
+          v-if="activeRecords()"
+          class="button is-primary"
+          @click="removePerson"
+        >
+          -
+        </button>
+      </div>
+      <div class="field mt-5">
+        <div class="control">
+          <label
+            for="use_rate"
+            class="checkbox"
+          >
+            <input
+              id="use_rate"
+              v-model="useRate"
+              type="checkbox"
+            >
+            Hourly Rate</label>
+        </div>
+      </div>
+      <div class="field mt-4">
+        <div
+          class="control"
+          v-if="useRate"
+        >
+          <input
+            v-model="hourlyRate"
+            type="number"
+            class="input"
+          >
+        </div>
+        <div
+          class="control"
+          v-if="useRate"
+        >
+          <div class="select">
+            <select v-model="currencySymbol">
+              <option
+                v-for="c in currencies"
+                :key="c"
+                v-text="c"
+              />
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -119,7 +147,3 @@ const run = () => {
 
 run()
 </script>
-
-<style lang="scss">
-@import './scss/surface_styles'
-</style>

@@ -1,67 +1,65 @@
 <template>
-  <div class="card">
-    <div class="card-content">
-      <h1
-        class="title"
-        v-text="stopptimer"
-      />
-      <p
-        class="subtitle"
-        v-text="persons"
-      />
-      <div class="field">
-        <button
-          class="button is-primary"
-          @click="addPerson"
-        >
-          +
-        </button> &nbsp;
-        <button
-          v-if="activeRecords()"
-          class="button is-primary"
-          @click="removePerson"
-        >
-          -
-        </button>
-      </div>
-      <div class="field mt-5">
-        <div class="control">
-          <label
-            for="use_rate"
-            class="checkbox"
-          >
-            <input
-              id="use_rate"
-              v-model="useRate"
-              type="checkbox"
-            >
-            Hourly Rate</label>
-        </div>
-      </div>
-      <div class="field mt-4">
-        <div
-          class="control"
-          v-if="useRate"
+  <div class="box">
+    <h1
+      class="title"
+      v-text="stopptimer"
+    />
+    <p
+      class="subtitle"
+      v-text="persons"
+    />
+    <div class="field">
+      <button
+        class="button is-primary"
+        @click="addPerson"
+      >
+        +
+      </button> &nbsp;
+      <button
+        v-if="activeRecords()"
+        class="button is-primary"
+        @click="removePerson"
+      >
+        -
+      </button>
+    </div>
+    <div class="field mt-5">
+      <div class="control">
+        <label
+          for="use_rate"
+          class="checkbox"
         >
           <input
-            v-model="hourlyRate"
-            type="number"
-            class="input"
+            id="use_rate"
+            v-model="useRate"
+            type="checkbox"
           >
-        </div>
-        <div
-          class="control"
-          v-if="useRate"
+          Hourly Rate</label>
+      </div>
+    </div>
+    <div class="field mt-4">
+      <div
+        class="control"
+        v-if="useRate"
+      >
+        <input
+          v-model="hourlyRate"
+          type="number"
+          class="input"
         >
-          <div class="select">
-            <select v-model="currencySymbol">
-              <option
-                v-for="c in currencies"
-                :key="c"
-                v-text="c"
-              />
-            </select>
-          </div>
+      </div>
+      <div
+        class="control"
+        v-if="useRate"
+      >
+        <div class="select">
+          <select v-model="currencySymbol">
+            <option
+              v-for="c in currencies"
+              :key="c"
+              v-text="c"
+            />
+          </select>
         </div>
       </div>
     </div>

@@ -83,21 +83,19 @@ run()
     <h1 class="title" v-text="stopptimer" />
     <p class="subtitle" v-text="persons" />
     <div class="field">
-      <button class="button is-primary  has-text-white" @click="addPerson">
+      <button class="button is-primary has-text-white is-medium" @click="addPerson">
         +
       </button> &nbsp;
-      <button v-if="activeRecords()" class="button is-primary  has-text-white" @click="removePerson">
+      <button v-if="activeRecords()" class="button is-primary has-text-white is-medium" @click="removePerson">
         -
       </button>
     </div>
-    <div class="field mt-5">
-      <div class="control">
-        <label for="use_rate" class="checkbox">
-          <input id="use_rate" v-model="useRate" type="checkbox">
-          Hourly Rate</label>
-      </div>
+    <div class="field">
     </div>
-    <div class="field mt-4">
+    <div class="field has-addons">
+      <div class="control">
+        <button class="button" :class="[useRate ? 'is-link' : undefined]" @click="useRate = !useRate">Hourly Rate</button>
+      </div>
       <div class="control" v-if="useRate">
         <input v-model="hourlyRate" type="number" class="input">
       </div>

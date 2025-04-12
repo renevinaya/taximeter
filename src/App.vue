@@ -8,9 +8,7 @@ interface IRecord {
   end?: Date
 }
 
-const currencies = Object.values(currency).filter((value, index, self) => {
-  return self.indexOf(value) === index
-}).sort()
+const currencies = new Set(Object.values(currency).sort())
 
 const records = ref<Array<IRecord>>([])
 const stopptimer = ref('0:00:00')

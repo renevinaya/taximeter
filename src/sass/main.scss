@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+@forward "./fonts.scss";
+
+// Set your brand colors
+$blue: #3998E9;
+$green: #39B54A;
+$yellow: #FDB833;
+$red: #DB162F;
+$black: #000501;
+
+@use 'bulma/sass/utilities' with (
+    $family-sans-serif: '"Titillium Web", sans-serif',
+    $primary: $blue,
+    $link: $green,
+    $widescreen-enabled: false,
+    $fullhd-enabled: false
+);
+
+// Import only what you need from Bulma
+@forward "bulma/sass/utilities";
+@forward "bulma/sass/base";
+@forward "bulma/sass/elements/box";
+@forward "bulma/sass/elements/button";
+@forward "bulma/sass/elements/title";
+@forward "bulma/sass/form";
+@forward "bulma/sass/layout/hero";
+@forward "bulma/sass/layout/section";
+@forward "bulma/sass/helpers/typography";
+@forward "bulma/sass/helpers/color";
+@forward "bulma/sass/themes";

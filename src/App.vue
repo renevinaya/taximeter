@@ -10,14 +10,14 @@
     />
     <div class="field">
       <button
-        class="button is-primary"
+        class="button is-primary  has-text-white"
         @click="addPerson"
       >
         +
       </button> &nbsp;
       <button
         v-if="activeRecords()"
-        class="button is-primary"
+        class="button is-primary  has-text-white"
         @click="removePerson"
       >
         -

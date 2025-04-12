@@ -1,71 +1,3 @@
-<template>
-  <div class="box">
-    <h1
-      class="title"
-      v-text="stopptimer"
-    />
-    <p
-      class="subtitle"
-      v-text="persons"
-    />
-    <div class="field">
-      <button
-        class="button is-primary  has-text-white"
-        @click="addPerson"
-      >
-        +
-      </button> &nbsp;
-      <button
-        v-if="activeRecords()"
-        class="button is-primary  has-text-white"
-        @click="removePerson"
-      >
-        -
-      </button>
-    </div>
-    <div class="field mt-5">
-      <div class="control">
-        <label
-          for="use_rate"
-          class="checkbox"
-        >
-          <input
-            id="use_rate"
-            v-model="useRate"
-            type="checkbox"
-          >
-          Hourly Rate</label>
-      </div>
-    </div>
-    <div class="field mt-4">
-      <div
-        class="control"
-        v-if="useRate"
-      >
-        <input
-          v-model="hourlyRate"
-          type="number"
-          class="input"
-        >
-      </div>
-      <div
-        class="control"
-        v-if="useRate"
-      >
-        <div class="select">
-          <select v-model="currencySymbol">
-            <option
-              v-for="c in currencies"
-              :key="c"
-              v-text="c"
-            />
-          </select>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import format from 'format-duration'
@@ -145,3 +77,37 @@ const run = () => {
 
 run()
 </script>
+
+<template>
+  <div class="box">
+    <h1 class="title" v-text="stopptimer" />
+    <p class="subtitle" v-text="persons" />
+    <div class="field">
+      <button class="button is-primary  has-text-white" @click="addPerson">
+        +
+      </button> &nbsp;
+      <button v-if="activeRecords()" class="button is-primary  has-text-white" @click="removePerson">
+        -
+      </button>
+    </div>
+    <div class="field mt-5">
+      <div class="control">
+        <label for="use_rate" class="checkbox">
+          <input id="use_rate" v-model="useRate" type="checkbox">
+          Hourly Rate</label>
+      </div>
+    </div>
+    <div class="field mt-4">
+      <div class="control" v-if="useRate">
+        <input v-model="hourlyRate" type="number" class="input">
+      </div>
+      <div class="control" v-if="useRate">
+        <div class="select">
+          <select v-model="currencySymbol">
+            <option v-for="c in currencies" :key="c" v-text="c" />
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import format from 'format-duration'
 import currency from 'country-to-currency'
+import { loadSettings, saveSettings } from './settings'
 
 interface IRecord {
   start: Date,
@@ -9,12 +10,13 @@ interface IRecord {
 }
 
 const currencies = new Set(Object.values(currency).sort())
+const settings = loadSettings()
 
 const records = ref<Array<IRecord>>([])
 const stopptimer = ref('0:00:00')
-const useRate = ref(false)
-const hourlyRate = ref(95)
-const currencySymbol = ref('EUR')
+const useRate = ref(settings.use_rate)
+const hourlyRate = ref(settings.hourly_rate)
+const currencySymbol = ref(settings.currency)
 const persons = computed(() => {
   const count = activeRecords()
   if (count === 1) {
@@ -72,6 +74,21 @@ const run = () => {
   }
   setTimeout(run, 30)
 }
+
+watch(useRate, () => {
+  settings.use_rate = useRate.value
+  saveSettings(settings)
+})
+
+watch(hourlyRate, () => {
+  settings.hourly_rate = hourlyRate.value
+  saveSettings(settings)
+})
+
+watch(currencySymbol, () => {
+  settings.currency = currencySymbol.value
+  saveSettings(settings)
+})
 
 run()
 </script>

@@ -12,7 +12,8 @@
     "bulma": "^1.0.3",
     "country-to-currency": "^2.0.2",
     "format-duration": "^3.0.2",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",
